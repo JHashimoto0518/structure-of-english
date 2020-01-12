@@ -1,2 +1,2 @@
 # structure-of-english
-Implementation of the Linguistic Structure of English by Java.
+Implement the Linguistic Structure of English by Java.
