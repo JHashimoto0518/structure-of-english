@@ -22,7 +22,7 @@ IVerb <|-- Verb
 class Adjective {
 
 }
-note left : 形容詞\n- Nounを修飾する
+note left : 形容詞\n- 名詞を修飾する
 Complement <|-- Adjective
 
 class Adverb {
