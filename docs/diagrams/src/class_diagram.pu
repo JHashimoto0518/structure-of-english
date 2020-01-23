@@ -5,15 +5,17 @@ interface "Verb" as IVerb
 interface Object
 interface Complement
 
+/'
 abstract class PartsOfSpeech {
 }
 note left : 品詞
+'/
 
 class Noun {
 }
-note left : 名詞
+note bottom : 名詞\n- 前置詞に伴われる
 
-PartsOfSpeech <|-- Noun
+'PartsOfSpeech <|-- Noun
 Subject <|-- Noun
 Object <|-- Noun
 Complement <|-- Noun
@@ -21,35 +23,35 @@ Complement <|-- Noun
 class Verb {
 
 }
-note left : 動詞
-PartsOfSpeech <|-- Verb
+note bottom : 動詞\n- 前にSを伴って完全な文を作る
+'PartsOfSpeech <|-- Verb
 IVerb <|-- Verb
 
 class Adjective {
 
 }
-note left : 形容詞
-PartsOfSpeech <|-- Adjective
+note left : 形容詞\n- Nounを修飾する
+'PartsOfSpeech <|-- Adjective
 Complement <|-- Adjective
 
 class Adverb {
 
 }
-note bottom : 副詞
-PartsOfSpeech <|-- Adverb
+note bottom : 副詞\n- 動詞、形容詞、副詞を修飾する
+'PartsOfSpeech <|-- Adverb
 
 class Preposition {
 
 }
-note left : 前置詞
-PartsOfSpeech <|-- Preposition
+note left : 前置詞\n- 後ろに名詞を伴う
+'PartsOfSpeech <|-- Preposition
 Adjective <|-- Preposition
 Adverb <|-- Preposition
 
 class Conjunction {
 
 }
-note top : 接続詞
-PartsOfSpeech <|-- Conjunction
+note top : 接続詞\n- 語と語をつなぐ\n- 文と文をつなぐ\n- ただし同じ品詞
+'PartsOfSpeech <|-- Conjunction
 
 @enduml
