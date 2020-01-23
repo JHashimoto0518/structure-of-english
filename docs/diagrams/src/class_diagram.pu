@@ -1,9 +1,16 @@
 @startuml Structure of English
 
 interface Subject
+note top : 主語
+
 interface "Verb" as IVerb
+note left : 動詞
+
 interface Object
+note top : 目的語
+
 interface Complement
+note top : 補語
 
 class Noun {
 }
@@ -22,7 +29,7 @@ IVerb <|-- Verb
 class Adjective {
 
 }
-note left : 形容詞\n- 名詞を修飾する
+note right : 形容詞\n- 名詞を修飾する
 Complement <|-- Adjective
 
 class Adverb {
