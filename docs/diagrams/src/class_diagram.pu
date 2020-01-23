@@ -1,8 +1,55 @@
-@startuml test
-class User {
-  -String id
-  -String name
-  +String name()
+@startuml Structure of English
+
+interface Subject
+interface "Verb" as IVerb
+interface Object
+interface Complement
+
+abstract class PartsOfSpeech {
 }
-User <|-- SpecificUser
+note left : 品詞
+
+class Noun {
+}
+note left : 名詞
+
+PartsOfSpeech <|-- Noun
+Subject <|-- Noun
+Object <|-- Noun
+Complement <|-- Noun
+
+class Verb {
+
+}
+note left : 動詞
+PartsOfSpeech <|-- Verb
+IVerb <|-- Verb
+
+class Adjective {
+
+}
+note left : 形容詞
+PartsOfSpeech <|-- Adjective
+Complement <|-- Adjective
+
+class Adverb {
+
+}
+note bottom : 副詞
+PartsOfSpeech <|-- Adverb
+
+class Preposition {
+
+}
+note left : 前置詞
+PartsOfSpeech <|-- Preposition
+Adjective <|-- Preposition
+Adverb <|-- Preposition
+
+class Conjunction {
+
+}
+note top : 接続詞
+PartsOfSpeech <|-- Conjunction
+
 @enduml
