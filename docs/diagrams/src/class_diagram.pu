@@ -1,6 +1,6 @@
 @startuml Structure of English
 
-package "PartOfSpeech" {
+package PartOfSpeech {
     interface Subject
     note top : 主語
 
@@ -51,4 +51,37 @@ package "PartOfSpeech" {
     note top : 接続詞\n- 語と語をつなぐ\n- 文と文をつなぐ\n- ただし同じ品詞
 }
 
+package SentencePatterns {
+
+    class FirstSentencePattern {
+        + Subject subject
+        + Verb verb
+    }
+
+    class SecondSentencePattern {
+        + Subject subject
+        + Verb verb
+        + Complement complement
+    }
+
+    class ThirdSentencePattern {
+        + Subject subject
+        + Verb verb
+        + Object object
+    }
+
+    class ForthSentencePattern {
+        + Subject subject
+        + Verb verb
+        + Object object1
+        + Object object2
+    }
+
+    class FifthSentencePattern {
+        + Subject subject
+        + Verb verb
+        + Object object
+        + Complement complement
+    }
+}
 @enduml
