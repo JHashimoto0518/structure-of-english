@@ -13,42 +13,56 @@ package PartOfSpeech {
     interface Complement
     note top : 補語
 
+    abstract class PartOfSpeech {
+    }
+
+    '名詞
     class Noun {
     }
     note bottom : 名詞\n- 前置詞に伴われる
-
+    PartOfSpeech <|-- Noun
     Subject <|-- Noun
     Object <|-- Noun
     Complement <|-- Noun
 
+    '動詞
     class Verb {
 
     }
     note bottom : 動詞\n- 前にSを伴って完全な文を作る
+    PartOfSpeech <|-- Verb
     IVerb <|-- Verb
 
+    '形容詞
     class Adjective {
 
     }
     note right : 形容詞\n- 名詞を修飾する
     Complement <|-- Adjective
+    PartOfSpeech <|-- Adjective
 
+    '副詞
     class Adverb {
 
     }
     note bottom : 副詞\n- 動詞、形容詞、副詞を修飾する
+    PartOfSpeech <|-- Adverb
 
+    '前置詞
     class Preposition {
 
     }
     note left : 前置詞\n- 後ろに名詞を伴う
+    PartOfSpeech <|-- Preposition
     Adjective <|-- Preposition
     Adverb <|-- Preposition
 
+    '接続詞
     class Conjunction {
 
     }
     note top : 接続詞\n- 語と語をつなぐ\n- 文と文をつなぐ\n- ただし同じ品詞
+    PartOfSpeech <|-- Conjunction
 }
 
 package SentencePatterns {
@@ -85,19 +99,17 @@ package SentencePatterns {
 }
 
 package Structure {
-    class Word {
-
-    }
-
     class Phrase {
-        + Word[] words
+        + PartOfSpeech[] partsOfSpeech
     }
-    Word <|-- Phrase
+    note bottom : 句\n- 前置詞+名詞\n- 準動詞
+    PartOfSpeech <|-- Phrase
 
     class Paragraph {
         + Conjunction conjunction
         + SentencePattern sentencePattern
     }
-    Word <|-- Paragraph
+    note bottom : 節
+    PartOfSpeech <|-- Paragraph
 }
 @enduml
