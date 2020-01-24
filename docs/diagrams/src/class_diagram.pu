@@ -1,52 +1,54 @@
 @startuml Structure of English
 
-interface Subject
-note top : 主語
+package "PartOfSpeech" {
+    interface Subject
+    note top : 主語
 
-interface "Verb" as IVerb
-note left : 動詞
+    interface "Verb" as IVerb
+    note left : 動詞
 
-interface Object
-note top : 目的語
+    interface Object
+    note top : 目的語
 
-interface Complement
-note top : 補語
+    interface Complement
+    note top : 補語
 
-class Noun {
+    class Noun {
+    }
+    note bottom : 名詞\n- 前置詞に伴われる
+
+    Subject <|-- Noun
+    Object <|-- Noun
+    Complement <|-- Noun
+
+    class Verb {
+
+    }
+    note bottom : 動詞\n- 前にSを伴って完全な文を作る
+    IVerb <|-- Verb
+
+    class Adjective {
+
+    }
+    note right : 形容詞\n- 名詞を修飾する
+    Complement <|-- Adjective
+
+    class Adverb {
+
+    }
+    note bottom : 副詞\n- 動詞、形容詞、副詞を修飾する
+
+    class Preposition {
+
+    }
+    note left : 前置詞\n- 後ろに名詞を伴う
+    Adjective <|-- Preposition
+    Adverb <|-- Preposition
+
+    class Conjunction {
+
+    }
+    note top : 接続詞\n- 語と語をつなぐ\n- 文と文をつなぐ\n- ただし同じ品詞
 }
-note bottom : 名詞\n- 前置詞に伴われる
-
-Subject <|-- Noun
-Object <|-- Noun
-Complement <|-- Noun
-
-class Verb {
-
-}
-note bottom : 動詞\n- 前にSを伴って完全な文を作る
-IVerb <|-- Verb
-
-class Adjective {
-
-}
-note right : 形容詞\n- 名詞を修飾する
-Complement <|-- Adjective
-
-class Adverb {
-
-}
-note bottom : 副詞\n- 動詞、形容詞、副詞を修飾する
-
-class Preposition {
-
-}
-note left : 前置詞\n- 後ろに名詞を伴う
-Adjective <|-- Preposition
-Adverb <|-- Preposition
-
-class Conjunction {
-
-}
-note top : 接続詞\n- 語と語をつなぐ\n- 文と文をつなぐ\n- ただし同じ品詞
 
 @enduml
