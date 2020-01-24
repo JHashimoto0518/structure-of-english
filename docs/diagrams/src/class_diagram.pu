@@ -52,36 +52,52 @@ package PartOfSpeech {
 }
 
 package SentencePatterns {
+    abstract class SentencePattern {
+        + Subject subject
+        + Verb verb
+    }
 
     class FirstSentencePattern {
-        + Subject subject
-        + Verb verb
     }
+    SentencePattern <|-- FirstSentencePattern
 
     class SecondSentencePattern {
-        + Subject subject
-        + Verb verb
         + Complement complement
     }
+    SentencePattern <|-- SecondSentencePattern
 
     class ThirdSentencePattern {
-        + Subject subject
-        + Verb verb
         + Object object
     }
+    SentencePattern <|-- ThirdSentencePattern
 
     class ForthSentencePattern {
-        + Subject subject
-        + Verb verb
         + Object object1
         + Object object2
     }
+    SentencePattern <|-- ForthSentencePattern
 
     class FifthSentencePattern {
-        + Subject subject
-        + Verb verb
         + Object object
         + Complement complement
     }
+    SentencePattern <|-- FifthSentencePattern
+}
+
+package Structure {
+    class Word {
+
+    }
+
+    class Phrase {
+        + Word[] words
+    }
+    Word <|-- Phrase
+
+    class Paragraph {
+        + Conjunction conjunction
+        + SentencePattern sentencePattern
+    }
+    Word <|-- Paragraph
 }
 @enduml
