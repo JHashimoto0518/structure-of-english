@@ -1,6 +1,6 @@
 @startuml Structure of English
 
-package PartOfSpeech {
+package PartsOfSpeech {
     interface Subject
     note top : 主語
 
@@ -98,18 +98,24 @@ package SentencePatterns {
     SentencePattern <|-- FifthSentencePattern
 }
 
-package Structure {
+package SentenceStructure {
+    class Word {
+
+    }
+    note right : 語
+    PartOfSpeech <|-- Word
+
     class Phrase {
-        + PartOfSpeech[] partsOfSpeech
+        + Word[] words
     }
     note bottom : 句\n- 前置詞+名詞\n- 準動詞
-    PartOfSpeech <|-- Phrase
+    Word <|-- Phrase
 
     class Paragraph {
         + Conjunction conjunction
         + SentencePattern sentencePattern
     }
     note bottom : 節
-    PartOfSpeech <|-- Paragraph
+    Word <|-- Paragraph
 }
 @enduml
