@@ -78,6 +78,7 @@ package SentencePatterns {
     class SecondSentencePattern {
         + Complement complement
     }
+    note bottom : S=C\nbe, become, come, look, feel, smell, seem, get
     SentencePattern <|-- SecondSentencePattern
 
     class ThirdSentencePattern {
@@ -95,6 +96,7 @@ package SentencePatterns {
         + Object object
         + Complement complement
     }
+    note bottom : O=C\ncall, make, drirve, paint, name, keep found
     SentencePattern <|-- FifthSentencePattern
 }
 
@@ -117,5 +119,25 @@ package SentenceStructure {
     }
     note bottom : 節
     Word <|-- Paragraph
+
+    class Gerund {
+        + Verb verb
+    }
+    note bottom : 動名詞\ndoing
+    Noun <|-- Gerund
+
+    class Participle {
+        + Verb verb
+    }
+    note bottom : 分詞\ndoing,done
+    Adjective <|-- Participle
+
+    class Infinitive {
+        + Verb verb
+    }
+    note bottom : 不定詞\n to do
+    Noun <|-- Infinitive
+    Adjective <|-- Infinitive
+    Adverb <|-- Infinitive
 }
 @enduml
